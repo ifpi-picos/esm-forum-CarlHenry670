@@ -1,8 +1,9 @@
 const Database = require('better-sqlite3');
 
-var bd = new Database('./bd/esmforum.db');
+let bd = new Database('./bd/esmforum.db');
 
 function reconfig(nome) {
+  console.log('🧪 Usando banco:', nome);
   bd = new Database(nome);
 }
 
@@ -15,10 +16,12 @@ function queryAll(query, params) {
 }
 
 function exec(statement, params) {
-  bd.prepare(statement).run(params);
+  return bd.prepare(statement).run(params);
 }
 
-exports.reconfig = reconfig;
-exports.query = query;
-exports.queryAll = queryAll;
-exports.exec = exec;
+module.exports = {
+  reconfig,
+  query,
+  queryAll,
+  exec
+};

@@ -1,11 +1,15 @@
-create table perguntas (
-  id_pergunta       integer      unique  not null  primary key  autoincrement,
-  texto             text         not null,
-  id_usuario        integer      not null
+DROP TABLE IF EXISTS respostas;
+DROP TABLE IF EXISTS perguntas;
+
+CREATE TABLE perguntas (
+  id_pergunta INTEGER PRIMARY KEY AUTOINCREMENT,
+  texto TEXT NOT NULL,
+  id_usuario INTEGER NOT NULL
 );
-  
-create table respostas (
-  id_resposta       integer      unique  not null  primary key  autoincrement,
-  id_pergunta       integer      not null,
-  texto             text         not null
-);  
+
+CREATE TABLE respostas (
+  id_resposta INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_pergunta INTEGER NOT NULL,
+  texto TEXT NOT NULL,
+  FOREIGN KEY (id_pergunta) REFERENCES perguntas(id_pergunta)
+);
