@@ -24,5 +24,14 @@ module.exports = {
 
   async recuperar_todas_respostas(id_pergunta) {
     return bd.queryAll('SELECT * FROM respostas WHERE id_pergunta = ?', [id_pergunta]);
+  },
+
+  async deletar_pergunta(id_pergunta) {
+    bd.exec('DELETE FROM respostas WHERE id_pergunta = ?', [id_pergunta]);
+    return bd.exec('DELETE FROM perguntas WHERE id_pergunta = ?', [id_pergunta]);
+  },
+
+  async deletar_resposta(id_resposta) {
+    return bd.exec('DELETE FROM respostas WHERE id_resposta = ?', [id_resposta]);
   }
 };

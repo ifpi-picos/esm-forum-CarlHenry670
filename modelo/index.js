@@ -32,6 +32,14 @@ async function get_num_respostas(id_pergunta) {
   return await repositorio.recuperar_num_respostas(id_pergunta);
 }
 
+async function deletar_pergunta(id_pergunta) {
+  return await repositorio.deletar_pergunta(id_pergunta);
+}
+
+async function deletar_resposta(id_resposta) {
+  return await repositorio.deletar_resposta(id_resposta);
+}
+
 module.exports = {
   reconfig_repositorio,
   listar_perguntas,
@@ -39,5 +47,7 @@ module.exports = {
   cadastrar_resposta,
   get_pergunta,
   get_respostas,
-  get_num_respostas
+  get_num_respostas,
+  deletar_pergunta,
+  deletar_resposta  
 };
