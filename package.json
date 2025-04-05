@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "cross-env USE_DB=false jest testes/unidade",
+    "test:int": "cross-env USE_DB=true jest testes/integridade"
   },
   "author": "",
   "license": "MIT",
